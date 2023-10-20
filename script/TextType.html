@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<!--
+	Mayank is Desginer.
+	Webpage  "Script/TextType.html".
+	JavaScript / CSS / HTML
+-->
+<html>
+    <head>
+        <title> Mayank </title>
+        <style>
+            *{
+                font:2rem 'comic sans ms';
+                color:#eee;
+            }
+            body{
+                background: #081747;
+            }
+            main{
+                display:flex;
+                justify-content:center;
+                margin: 30vh auto;
+                height: 3rem;
+                line-height: 3rem;
+            }
+            #type_text{
+                color: #6937dd;
+                position: relative;
+            }
+            #type_text::after{
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                height: 3rem;
+                width: 100%;
+                background:#081747;
+                border-left: 5px groove #1754d6;
+                overflow: hidden;
+                animation: anime 3s steps(10) infinite;
+            }
+            @keyframes anime{
+                40%, 60%{
+                    left:100%;
+                    width:0%;
+                }100%{
+                    left:0%;
+                    width:100%;
+                }
+            }
+
+        </style>
+    </head>
+    <body>
+        <main>
+
+            <div> I am a&nbsp;&nbsp; </div>
+            <div id="type_text">Master</div>
+
+        </main>
+        <script>
+
+            var type_text = document.getElementById('type_text');
+
+            function changeText()
+            {
+                var who = ['Mayank','Desginer','Programmer','Editor'];
+                
+                var index = 0;
+
+                var undefined = 'Master';
+
+                setInterval(() => 
+                {   
+                    if(type_text.innerText == 'undefined' && index > who.length)
+                    {                        
+                        type_text.innerText = 'Master';
+                    }
+                    else
+                    {
+                        type_text.innerText = who[index];
+
+                        console.log(index+"  "+who[index]);
+
+                        (index < who.length)? index++ : index = 0;
+                    }
+
+                }, 3000);
+            }
+            changeText();
+
+            setInterval(changeText, 12000);
+ 
+        </script>
+    </body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<!--
+	Mayank is Desginer.
+	Webpage  "Script/Color".
+	JavaScript / CSS / HTML
+-->
+<html>
+    <head>
+        <title> Mayank </title>
+        <style>
+            *{
+                overflow: hidden;
+                font:20px arial;
+                color:#000;
+                outline: none;
+                border:none;
+                text-align: center;
+            }
+            main{
+                width: 100vw;
+                height: 100vh;
+                display: grid;
+                place-content: space-around;
+            }
+            #center{
+                background: rgba(255,255,255,0.5);
+                width: 400px;
+                height: 300px;
+                border-radius: 10px;
+            }
+            #label{
+                padding: 20px;
+            }
+            button{
+                background: #000;
+                color:#eee;
+                width: 200px;
+                padding: 20px;
+                margin:20px;
+                border-radius: 10px;
+            }
+        </style>
+    </head>
+    <body>
+        <main>
+            <div id="center">
+                <h1> CLICK BUTTON TO CHANGE THE </h1>
+                <div id="label">Background :</div>
+                <button accesskey="g"> #ffffff </button>
+            </div>
+        </main>
+        <script>
+
+            let button = document.getElementsByTagName("button");
+
+            let label = document.getElementById("label");
+
+            var hexdecimal, color = [0,1,2,3,4,5,6,7,8,9,"A","B","C","D","E","F"];
+
+            button[0].onclick = function()
+            {
+                hexdecimal = "#";
+
+                for (var i = 0;i < 6;i++)
+                {
+                    hexdecimal += color[setColor()];
+                }
+                document.body.style.backgroundColor = hexdecimal;
+
+                this.innerText = hexdecimal;
+
+                label.innerText = "Background : "+document.body.style.backgroundColor;
+            }
+            function setColor()
+            {
+                return Math.floor(Math.random() * color.length);
+            }
+
+        </script>
+    </body>
+</html>

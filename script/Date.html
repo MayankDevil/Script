@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<!--
+	Mayank is Desginer.
+	Webpage  "Script/Date".
+	JavaScript / CSS / HTML
+-->
+<html lang="en">
+    <head>
+        <title> Mayank </title>
+        <style>
+            *{
+                margin: 0;
+                border: none;
+                outline: none;
+                text-align: center;
+            }
+            #getDate, #setDate{
+                display:grid;
+                grid-template-columns: 1fr 1fr;
+                grid-template-rows:2fr 1fr;
+                align-items: center;
+                margin:20vh 30vw;
+                width: 400px;
+                height: 300px;
+                background: #00bdbd;
+                position: absolute;
+            }
+            #date{
+                grid-column: 1/-1;
+                font:30px arial;
+                color: #000;
+            }
+            button, #field{
+                width: 100%;
+                height: 100%;
+                background: #111;
+                color:#eee;
+            } button:hover{
+                background: #000;
+            }
+            #field{
+                background: #00bdbd;
+                grid-column: 1/-1;
+                width: auto;
+                font:30px arial;
+                color: #000;
+            } 
+            #setDate button{
+                grid-column: 1/-1;
+            }
+        </style>
+    </head>
+    <body>
+        <main>
+            <div id="getDate">
+                <div id="date"></div>
+                <button> CLOSE </button>
+                <button> SET </button>
+            </div>
+            <div id="setDate">
+                <input type="date" id="field">
+                <button> SET_DATE </button>
+            </div>
+        </main>
+        <script>
+
+            let button = document.getElementsByTagName("button");
+
+            let field = document.getElementById("field");
+
+            let getDate = document.getElementById("getDate");
+
+            let setDate = document.getElementById("setDate");
+
+            let date = document.getElementById("date");
+
+            setDate.style.display = "none";
+
+            let d = new Date();
+
+            var dates, months, years;
+
+            button[0].onclick = function()
+            {
+                this.style.backgroundColor = "#ff1111";
+
+                setTimeout(() => {
+                    window.close();
+                }, 2000);
+            }
+            button[1].onclick = function()
+            {
+                setDate.style.display = "grid";
+            }
+            
+            dates = d.getDate();
+
+            switch(d.getMonth())
+            {
+                case 0 : months = "January";
+                    break;
+                case 1 : months = "February";
+                    break;
+                case 2 : months = "March";
+                    break;
+                case 3 : months = "April";
+                    break;
+                case 4 : months = "May";
+                    break;
+                case 5 : months = "June";
+                    break;
+                case 6 : months = "July";
+                    break;
+                case 7 : months = "August";
+                    break;
+                case 8 : months = "September";
+                    break;
+                case 9 : months = "October";
+                    break;
+                case 10 : months = "November";
+                    break;
+                default : months = "December";
+            }
+
+            years = d.getFullYear();
+
+            date.innerHTML = dates+"<sup>th</sup> "+months+" "+years;
+
+            setInterval(() => {
+                date.innerHTML = dates+"<sup>th</sup> "+months+" "+years;
+            }, 1000*60*60)
+
+            button[2].onclick = function()
+            {
+                alert(field.value);
+
+                d.setDate();
+
+                d.setMonth();
+
+                d.setFullYear();
+
+                date.innerHTML = field.value;
+
+                setDate.style.display = "none";
+            }
+
+        </script>
+    </body>
+</html>

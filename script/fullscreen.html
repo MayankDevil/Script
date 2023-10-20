@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<!--
+	Mayank is Desginer.
+	Webpage  "Script/fullscreen".
+	JavaScript / CSS / HTML
+-->
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Mayank</title>
+        <style>
+            
+            body{
+                background: #485460;
+            }
+            #screen{
+                margin: auto;
+                padding: 5rem 1rem;
+                width: 50vw;
+                font:3rem 'arial';
+                text-align: center;
+                color:#f7d794;
+                background: #466584;
+            }
+            #screen:fullscreen{
+                background: #f7d794;
+                color: #006266;
+            }
+        </style>
+    </head>
+    <body>
+    
+        <main>
+            <div id="screen"> double click me dear please </div>
+        </main>
+
+        <script>
+
+            let screen = document.getElementById('screen');
+
+            screen.ondblclick = () =>
+            {
+                if(document.fullscreenElement)
+                {
+                    document.exitFullscreen();
+                    screen.innerText = "Double click me  request & exit";
+                }
+                else
+                {
+                    screen.requestFullscreen();
+                    screen.innerText = "full screen";
+                }
+            }
+
+
+        </script>
+        
+    </body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<!--
+	Mayank is Desginer.
+	Webpage  "Script/hardcode".
+	JavaScript / CSS / HTML
+-->
+<html lang="en">
+    <head>
+        <title> Mayank </title>
+        <style>
+
+            *{
+                margin:0;
+                overflow: none;
+	color:#fff;
+	border-radius:5px;
+                font-family:'consolas';
+                outline: none;
+                border: none;
+                user-select: none;
+            }
+            #hardcode{
+                width:60%;
+                margin: 5% auto;
+                padding:20px;
+                background:#555;
+            }
+            #code{
+                width: 90%;
+                margin:20px;
+                padding:10px;
+                user-select: text;
+                color:#920f0f;
+                background:#111;
+            }
+            button ,#fld{
+                padding: 10px 20px;
+                background:#0080ff;
+            } button:hover{
+                background:#0060ff;
+            }
+            #fld{
+                background:#777;
+            }
+            h3{
+                padding: 10px;
+            }
+
+        </style>
+    </head>
+    <body>
+
+        <div id="hardcode">
+            <h3>  Hardcode : Genrate Strong Password  </h3>
+            <input type="text" placeholder="Set length not more 50" id="fld">
+            <button>  New Password  </button>
+            <div id="code"></div>
+
+        </div>
+        
+        <script>
+
+            let fld = document.getElementById('fld');
+            
+            var num = new Array();
+
+            var long, count = 0, keyword = [
+                'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z',
+                'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z',
+                '!','@','#','$','%','^','&','*','(',')','[',']','{','}','_','+',
+                0,1,2,3,4,5,6,7,8,9
+            ];
+
+            if(fld.value != "" && fld.value < 51) long = fld.value; else long = 8;
+
+            document.getElementsByTagName('button')[0].onclick = function()
+            {
+                document.location.reload();
+            }
+            while(count < long)
+            {
+                num[count] = keyword[Math.floor(Math.random()*Math.abs(keyword.length))];
+
+                document.getElementById('code').insertAdjacentText("beforeend",value = num[count]);
+                
+                count++;
+            }
+
+        </script>
+    </body>
+</html>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<!--
+	Mayank is Desginer.
+	Webpage  "Script/Day".
+	JavaScript / CSS / HTML
+-->
+<html>
+    <head>
+        <title> Mayank </title>
+        <style>
+
+            *{
+                margin:0;
+                font:25px arial;
+                color: #fff;
+                text-align:center;
+                border: none;
+                outline: none;
+            }
+            #getDay{
+                margin:20vh 30vw;
+                width: 450px;
+                height: 300px;
+                padding: 10px;
+                background:#ff4400;
+                display: grid;
+                resize: both;
+                border-radius: 10px;
+            }
+            #greet{
+                font:italic 18px calibri;
+            }
+            button{
+                width: 150px;
+                padding: 10px;
+                background: #ffa600;
+                border-radius: 10px;
+            } button:hover{
+                background:#ffd700;
+            }
+
+        </style>
+    </head>
+    <body>
+
+        <main>
+
+            <div id="getDay">
+                <div id="day"></div>
+                <div id="greet"></div>
+                <div>
+                    <button> Like :) </button>
+                    <button> Unlike :( </button>
+                </div>
+            </div>
+
+        </main>
+        <script>
+
+            let button = document.getElementsByTagName("button");
+
+            let getDay = document.getElementById("getDay");
+
+            let day = document.getElementById("day");
+
+            let greet = document.getElementById("greet");
+
+            let d = new Date();
+
+            var week;
+
+            var massage;
+
+            switch(d.getDay())
+            {
+                case 1 : week = "Monday";   
+
+                    massage = "Let's Start a new Journy of the week with lot of energy and happiness because if beginning is good so it pass better and end is best.";
+
+                    break;
+                case 2 : week = "Tuesday"; 
+                
+                    massage = "Control can sometimes be an illustion, but sometimes you need illustion togain control. Fantasy is an easy way to give meaning to the world. To cloakour harsh reality with escapist comfort. After all isn't that why we surround ourselves with so many screens? so we  can avoid seeing? So we can avoid each other? So we can avoid truth?";
+                
+                    break;
+                case 3 : week = "Wednesday"; 
+                
+                    massage = "Every has a secreat. People are always hiding something their vulnerablilites their fears, their shame. I don't care how happy he looks. Everyone has moster.";
+
+                    break;
+                case 4 : week = "Thrusday"; 
+
+                    massage = "They leave in your society they look normal like us. Deeply inside in your system.They know your darkside. They came to true justice . The society is hell not Becauseof those who do evil, but because of those who look on and do nothing but he fuck it.if they are evil so they are devil their have not kindness . He fuck you mother anal";
+
+                    break;
+                case 5 : week = "Friday";  
+                
+                    massage = "Time to grow up. There are not a gods. Our Closest deities are a society of the rechest, most inflwntial men in existence Men who fuck over the rest of us for profit, for fun, and then leave us in the streets for dead.";
+                
+                    break;
+                case 6 : week = "Saturday";  
+                
+                    massage = "Daemons, They don't stop working. They are always active, They seduce, They manipulate.They own us,  And even though you are with me, even though I created you all makes no difference. We all must deal with alone. The best we can hope for the only silver lining in all of this is that when we break through we find a few familar faces waiting on other side.";
+
+                    break;
+                default : week = "Sunday";
+
+                    massage = "Most coders think debbuging software is about fixing a mistake, but that's bullshit Debuggings actually all about finding the bug, about understanding why the bug was there to begin with, about knowing that its existence was no accident. It came to you to deliver a message, like an unconscious bubble floating to the surface popping with a revelation you're secretly know all along.";
+            }
+    
+            day.innerText = "---  "+week+"  ---";
+
+            greet.innerText = ": "+massage;
+
+            button[0].onclick = function()
+            {
+                greet.innerText ="Thank Dear :)";
+
+                setTimeout(() => {
+                    window.close();
+                }, 2000);
+            }
+            button[1].onclick = function()
+            {
+                greet.innerText = "I will try BETTER next Time. :(";
+
+                setTimeout(() => {
+                    window.close();
+                }, 2000);   
+            }
+
+            // Reload function
+
+            setInterval(() => {
+                window.location.reload();
+            }, 60*60*1000);
+
+        </script>
+
+    </body>
+</html>
