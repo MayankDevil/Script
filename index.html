@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<!--
+-	script "JavaScript components"
+-	Developed | Desgined by Mayank
+-	https://github.com/MayankDevil
+-	location : ./index
+-->
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>MayankDevil</title>
+	<!--
+		---------
+		| style |
+		---------
+	-->
+	<style>
+		*{
+			margin:0;
+			padding: 0;
+			font-family:SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+			font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue","Noto Sans","Liberation Sans",Arial,sans-serif,"Apple Color Emoji";
+			color:#20252b;
+			text-decoration: none;
+			font-weight: normal;
+			border: none;
+			outline: none;
+			box-sizing: border-box;
+		}
+		body{
+			text-align: center;
+			background: #ffffff;
+		}
+		main{
+			display: inline;
+		}
+		a:not(:first-child){
+			display:inline-block;
+			max-width: 500px;
+			margin:2rem;
+			padding: 1rem;
+			border:3px solid #dcdde1;
+			border-radius: 1rem;
+		}
+		a:hover{
+			border-color: #718093;
+		}
+		h1{
+			padding: 1rem;
+		}
+		p{
+			padding: 1rem;
+			line-height: 1.5rem;
+			color:#718093;
+		}
+		h5{
+			display: block;
+			padding: 1rem;
+			font-size: 1rem;
+			color:#718093;
+			background: #20252b;
+		}
+		h5 > a{
+			color:#ffffff;
+		}
+	</style>
+</head>
+
+<body>
+
+	<main>
+		<!--
+			[ copy right ] ---------------
+		-->
+		<h5>MayankDevil &copy; Developed | Desgined by <a href="https://github.com/MayankDevil"> Mayank </a></h5>
+		<!--
+			----------
+			| script |
+			----------
+		-->
+		<script>
+		
+			/*
+				[ scriptData ] : array of object collect name of description 
+			*/ 
+			var scriptData = [
+				{
+					name: "Calculater",
+					description: "normal arithmetic calculator with JavaScript"
+				},
+				{
+					name: "ColorGenerator",
+					description: "on button clock genterat random color"
+				},
+				{
+					name: "CopyBoard",
+					description: "copy writed text form the clip board"
+				},
+				{
+					name: "Counter",
+					description: "Time counter { minute | second | millisecond } count as click"
+				},
+				{
+					name: "Date",
+					description: "display today and month calender according your computer system"
+				},
+				{
+					name: "ToDay",
+					description: "display today week and random jokes for you."
+				},
+				{
+					name: "SearchBar",
+					description: "on keypress match in loop substring of search field inner data than display else none"
+				},
+				{
+					name: "FullScreen",
+					description: "on double click convert element into full screen mode and again double click back to original size"
+				},
+				{
+					name: "HardCode",
+					description: ""
+				},
+				{
+					name: "Lock",
+					description: ""
+				},
+				{
+					name: "NavBar",
+					description: ""
+				},
+				{
+					name: "PasswordChecker",
+					description: ""
+				},
+				{
+					name: "PictureFrame",
+					description: ""
+				},
+				{
+					name: "PopUpBox",
+					description: ""
+				},
+				{
+					name: "Progress",
+					description: ""
+				},
+				{
+					name: "ScrollAnimation",
+					description: ""
+				},
+				{
+					name: "SearchList",
+					description: ""
+				},
+				{
+					name: "Slide",
+					description: ""
+				},
+				{
+					name: "TextType",
+					description: ""
+				},
+				{
+					name: "Theme",
+					description: ""
+				},
+				{
+					name: "Time",
+					description: ""
+				},
+				{
+					name: "Zindex",
+					description: ""
+				}
+			]
+			/*
+				for loop [ display ] script data
+			*/ 
+			for (i = 0; i < scriptData.length; i++)
+			{
+				document.write(`
+					<a href="script/${scriptData[i].name}.html">
+						
+						<h1> ${scriptData[i].name} </h1>
+					
+						<p> ${scriptData[i].description} </p>
+						
+					</a>
+				`)
+			}
+			
+		</script>
+	
+	</main>
+	
+</body>
+
+</html>
+<!-- the end -->

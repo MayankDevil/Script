@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<!--
+-	script "JavaScript components"
+-	Developed | Desgined by Mayank
+-	https://github.com/MayankDevil
+-	location : ./script/SearchBar
+-->
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>MayankDevil</title>
+	<!--
+		---------
+		| style |
+		---------
+	-->
+    <style>
+        *{
+			margin:0;
+			padding: 0;
+			font-family:SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+			font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue","Noto Sans","Liberation Sans",Arial,sans-serif,"Apple Color Emoji";
+			color:#20252b;
+			text-decoration: none;
+			font-weight: normal;
+			border: none;
+			outline: none;
+			box-sizing: border-box;
+		}
+        body{
+            background: #f8f9fa;
+        }
+        main{
+            margin:1rem auto;
+            padding: 1rem;
+            max-width: 800px;
+        }
+        #search_bar{            
+            padding: 1rem;
+            margin: 1rem auto;
+            width: 100%;
+            background: #f8f9fa;
+            border:3px solid #6c757d;
+        }
+        #search_data > li{
+            background: #ffffff;
+            padding: 1rem 2rem;
+            list-style: none;
+        }
+        #search_data > li > a{
+            display: inline-block;
+            text-decoration: none;
+            color:#007bff;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <!-- { main frame } -->
+    <main>
+
+        <input type="search" name="search" id="search_bar" placeholder="Search Data ...">
+
+        <ol id="search_data">
+            <li><a href="#"> SpiderMan </a></li>
+            <li><a href="#"> IronMan </a></li>
+            <li><a href="#"> DeadPool </a></li>
+            <li><a href="#"> BatMan </a></li>
+            <li><a href="#"> TaskMaster </a></li>
+            <li><a href="#"> CptainAmerica </a></li>
+            <li><a href="#"> Black Widow </a></li>
+            <li><a href="#"> Nicoles Furi </a></li>
+            <li><a href="#"> Hulk </a></li>
+        </ol>
+
+    </main>
+    <!--
+        ----------
+        | script |
+        ----------
+    -->
+    <script>
+
+        let search_bar = document.getElementById('search_bar');
+        
+        /*
+            on keypress match sub in data display else none
+        */ 
+        search_bar.onkeyup = function()
+        {
+            let search = search_bar.value.toUpperCase();
+
+            let data_list = document.querySelectorAll('#search_data li');
+
+            for(let i = 0; i < data_list.length; i++)
+            {
+                let a = data_list[i].getElementsByTagName('a')[0];
+
+                let  data = a.textContent || a.innerHTML;
+
+                if(data.toUpperCase().indexOf(search) > -1)
+                {
+                    data_list[i].style.display = '';
+                }
+                else
+                {
+                    data_list[i].style.display = 'none';
+                }
+            }
+        }
+
+    </script>
+
+</body>
+
+</html>
+<!-- the end -->

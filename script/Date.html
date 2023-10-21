@@ -1,67 +1,99 @@
 <!DOCTYPE html>
 <!--
-	Mayank is Desginer.
-	Webpage  "Script/Date".
-	JavaScript / CSS / HTML
+-	script "JavaScript components"
+-	Develope | Desgined by Mayank
+-	https://github.com/MayankDevil
+-	location : ./script/Date
 -->
 <html lang="en">
-    <head>
-        <title> Mayank </title>
-        <style>
-            *{
-                margin: 0;
-                border: none;
-                outline: none;
-                text-align: center;
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>MayankDevil</title>
+	<!--
+		---------
+		| style |
+		---------
+	-->
+    <style>
+        *{
+			margin:0;
+			padding: 0;
+			font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue","Noto Sans","Liberation Sans",Arial,sans-serif,"Apple Color Emoji";
+			color:#000000;
+			text-decoration: none;
+			font-weight: normal;
+			border: none;
+			outline: none;
+			box-sizing: border-box;
+		}
+        main{
+            width: 100%;
+            min-height: 100vh;
+            background: #2bcbcc;
+        }
+        #getDate{
+            padding: 1rem 2rem;
+            text-align: right;
+            font-size: 2rem;
+        }
+        #setDate{
+            display: grid;
+            grid-gap: 2rem;
+            grid-template-columns: repeat(7,1fr);
+            padding: 2rem;
+        }
+        .date, .dates{
+            text-align: center;
+            padding: 2rem;
+            font-size: 1.5rem;
+            border: 1px solid #0fb9b1;
+        }
+        .dates{
+            padding: 2rem;
+            font-size: 1rem;
+            color: #f5f6fa;
+            background: #000000;
+        }
+        @media screen and (max-width:900px) {
+            #setDate{
+                display: grid;
+                grid-gap: 1rem;
+                grid-template-columns: repeat(6,1fr);
+                padding: 1rem;
             }
-            #getDate, #setDate{
-                display:grid;
-                grid-template-columns: 1fr 1fr;
-                grid-template-rows:2fr 1fr;
-                align-items: center;
-                margin:20vh 30vw;
-                width: 400px;
-                height: 300px;
-                background: #00bdbd;
-                position: absolute;
+        }
+        @media screen and (max-width:700px) {
+            #setDate{
+                grid-template-columns: repeat(5,1fr);
             }
-            #date{
-                grid-column: 1/-1;
-                font:30px arial;
-                color: #000;
+        }
+        @media screen and (max-width:500px) {
+            #setDate{
+                grid-template-columns: repeat(4,1fr);
             }
-            button, #field{
-                width: 100%;
-                height: 100%;
-                background: #111;
-                color:#eee;
-            } button:hover{
-                background: #000;
-            }
-            #field{
-                background: #00bdbd;
-                grid-column: 1/-1;
-                width: auto;
-                font:30px arial;
-                color: #000;
-            } 
-            #setDate button{
-                grid-column: 1/-1;
-            }
-        </style>
-    </head>
-    <body>
-        <main>
-            <div id="getDate">
-                <div id="date"></div>
-                <button> CLOSE </button>
-                <button> SET </button>
-            </div>
-            <div id="setDate">
-                <input type="date" id="field">
-                <button> SET_DATE </button>
-            </div>
-        </main>
+        }
+        
+    </style>
+
+</head>
+
+<body>
+
+    <!-- { main Frame } -->
+    <main>
+
+        <div id="setDate"></div>
+        
+        <div id="getDate"></div>
+        
+        <!--
+            ---------
+            | script |
+            ---------
+        -->
         <script>
 
             let button = document.getElementsByTagName("button");
@@ -72,79 +104,85 @@
 
             let setDate = document.getElementById("setDate");
 
-            let date = document.getElementById("date");
-
-            setDate.style.display = "none";
-
             let d = new Date();
 
-            var dates, months, years;
-
-            button[0].onclick = function()
-            {
-                this.style.backgroundColor = "#ff1111";
-
-                setTimeout(() => {
-                    window.close();
-                }, 2000);
-            }
-            button[1].onclick = function()
-            {
-                setDate.style.display = "grid";
-            }
+            var dates, months, years , monthDays;            
             
             dates = d.getDate();
+
+            days = ["Sun","Mon","Tues","Wednes","Thrus","Fri","Satur"]
+
+            years = d.getFullYear()
+
+            // set month number & name
 
             switch(d.getMonth())
             {
                 case 0 : months = "January";
+                    monthDays = '31';
                     break;
                 case 1 : months = "February";
+                    monthDays = (years%4 != 0)? '28': '29';
                     break;
                 case 2 : months = "March";
+                    monthDays = '31';
                     break;
                 case 3 : months = "April";
+                    monthDays = '30';
                     break;
                 case 4 : months = "May";
+                    monthDays = '31';
                     break;
                 case 5 : months = "June";
+                    monthDays = '30';
                     break;
                 case 6 : months = "July";
+                    monthDays = '31';
                     break;
                 case 7 : months = "August";
+                    monthDays = '31';
                     break;
                 case 8 : months = "September";
+                    monthDays = '30';
                     break;
                 case 9 : months = "October";
+                    monthDays = '31';
                     break;
                 case 10 : months = "November";
+                    monthDays = '30';
                     break;
                 default : months = "December";
+                    monthDays = '31';
             }
 
-            years = d.getFullYear();
+            getDate.innerHTML = ` ${dates} <sup>th</sup> ${months} ${years} `
 
-            date.innerHTML = dates+"<sup>th</sup> "+months+" "+years;
-
-            setInterval(() => {
-                date.innerHTML = dates+"<sup>th</sup> "+months+" "+years;
-            }, 1000*60*60)
-
-            button[2].onclick = function()
+            setInterval(function()
             {
-                alert(field.value);
-
-                d.setDate();
-
-                d.setMonth();
-
-                d.setFullYear();
-
-                date.innerHTML = field.value;
-
-                setDate.style.display = "none";
+                getDate.innerHTML = ` ${dates} <sup>th</sup> ${months} ${years} `
+            
+            }, 10*60*60)
+            /*
+                set dates and mark today
+            */ 
+            for (let i = 0; i < monthDays; i++)
+            {
+                if (dates == (i+1))
+                {
+                    setDate.insertAdjacentHTML("beforeend",`<div class='dates'> ${i+1}  ${days[d.getUTCDay()]}day </div>`)
+                }
+                else
+                {
+                    setDate.insertAdjacentHTML("beforeend",`<div class='date'> ${i+1} </div>`)
+                }
             }
+            console.log(d.getUTCDay())
 
         </script>
-    </body>
+
+    </main>
+
+</body>
+
 </html>
+<!-- the end -->

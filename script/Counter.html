@@ -1,163 +1,200 @@
 <!DOCTYPE html>
 <!--
-	Mayank is Desginer.
-	Webpage  "Script/Counter".
-	JavaScript / CSS / HTML
+-	script "JavaScript components"
+-	Developed | Desgined by Mayank
+-	https://github.com/MayankDevil
+-	location : ./script/Counter
 -->
-<html>
-    <head>
-        <title> Mayank </title>
-        <style>
-            main{
-                display: flex;
-                justify-content: space-around;
-                padding-top:100px;
-            }
-            #JS_Timer{
-                border:5px outset #0099ff;
-                border-radius: 20px;
-                width: 50vw;
-                height: 50vh;
-                padding: 50px;
-                display: grid;
-                grid-template-columns: 1fr 1fr 1fr;
-                grid-template-rows:1fr 3fr 2fr ;
-                grid-gap:50px;
-            }
-            h1{
-                grid-row: 1/2;
-                grid-column:1/4;
-                text-align: center;
-                font:bold 30px arial;
-            }
-            #timer{
-                grid-column:1/4;
-                text-align: center;
-                font:400% calibri;
-            }
-            .button{
-                border: 2px solid transparent;
-                outline: none;
-                border-radius:35px;
-                font:bold 16px arial;
-                color:#eee;
-                background:#00a2ff;
-            }
-            .button:hover{
-                border:2px solid #00a2ff;
-                color:#00a2ff;
-                background:transparent;
-            }
-        </style>
-    </head>
-    <body>
-        <main>
-            <div id="JS_Timer">
+<html lang="en">
 
-                <h1> Program To Stop Watch </h1>
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>MayankDevil</title>
+	<!--
+		---------
+		| style |
+		---------
+	-->
+    <style>
+        *{
+			margin:0;
+			padding: 0;
+			font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue","Noto Sans","Liberation Sans",Arial,sans-serif,"Apple Color Emoji";
+			color:#20252b;
+			text-decoration: none;
+			font-weight: normal;
+			border: none;
+			outline: none;
+			box-sizing: border-box;
+		}
+        main{
+            display: flex;
+            justify-content: space-around;
+            padding-top:100px;
+        }
+        #JS_Timer{
+            border:5px outset #0099ff;
+            border-radius: 20px;
+            width: 50vw;
+            height: 50vh;
+            padding: 50px;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-rows:1fr 3fr 2fr ;
+            grid-gap:50px;
+        }
+        h1{
+            grid-row: 1/2;
+            grid-column:1/4;
+            text-align: center;
+            font:bold 30px arial;
+        }
+        #timer{
+            grid-column:1/4;
+            text-align: center;
+            font-size:400%;
+        }
+        .button{
+            border: 2px solid transparent;
+            outline: none;
+            border-radius:1rem;
+            font-size: 1.5rem;
+            color:#eee;
+            background:#00a2ff;
+        }
+        .button:hover{
+            border:2px solid #00a2ff;
+            color:#00a2ff;
+            background:transparent;
+        }
+    </style>
 
-                <div id="timer"></div>
+</head>
 
-                <button class="button"> START </button>
-                <button class="button"> RESET </button>
-                <button class="button"> CLOSE </button>
- 
-            </div>       
-        </main>
-        <script>
-                    
-            var timer = document.getElementById("timer");
+<body>
+    <!-- { main frame } -->
+    <main>
+        <div id="JS_Timer">
 
-            var button = document.getElementsByClassName("button");
+            <h1> Time Counter </h1>
 
-            var hours, minutes, seconds, milliseconds;
+            <div id="timer"></div>
+
+            <button class="button"> START </button>
+            <button class="button"> RESET </button>
+            <button class="button"> CLOSE </button>
+
+        </div>       
+    </main>
+    <!--
+        ----------
+        | script |
+        ----------
+    -->
+    <script>
+                
+        var timer = document.getElementById("timer");
+
+        var button = document.getElementsByClassName("button");
+
+        var hours, minutes, seconds, milliseconds;
+        
+        var run_time, run_switch = false;
+
+        parseInt(hours);
+
+        hours = minutes = seconds = milliseconds = 00;
+
+        timer.innerText = hours+" : "+minutes+" : "+seconds+" : "+milliseconds;
+
+        /*
+            on button index 0 click { start | stop }
+        */ 
+        button[0].onclick = function()
+        {
+            if(run_switch == false)
+            {
+                run_time = setInterval(() => {
+
+                    run_switch = true;
+
+                    milliseconds++ ;
+
+                    if(milliseconds > 60)
+                    {
+                        milliseconds = 0;
+
+                        seconds++;
+                    }
+                    if(seconds > 60)
+                    {
+                        milliseconds = seconds = 0;
+
+                        minutes++;
+                    }
+                    if(minutes > 60)
+                    {
+                        minutes = seconds = milliseconds = 0;
+
+                        hours++;
+                    }
+                    timer.innerText = hours+" : "+minutes+" : "+seconds+" : "+milliseconds;
+
+                }, 1000/60 );
+
+                this.style.backgroundColor = "transparent";
+                this.style.borderColor = "green";
+                this.style.color = "green";
+
+                button[0].innerText = "STOP";
+            }
+            if(run_switch == true)
+            {
+                clearInterval(run_time);
+
+                this.style.borderColor = "#00a2ff";
+                this.style.color = "#00a2ff";
+
+                button[0].innerText = "START";
+
+                run_switch = false;
+            }
+        }
+        /*
+            on button index 1 click reset the values
+        */ 
+        button[1].onclick = function()
+        {
+            clearInterval(run_time);
             
-            var run_time, run_switch = false;
-
-            parseInt(hours);
-
-            hours = minutes = seconds = milliseconds = 00;
+            hours = minutes = seconds = milliseconds = 0;
 
             timer.innerText = hours+" : "+minutes+" : "+seconds+" : "+milliseconds;
 
-            button[0].onclick = function()
-            {
+            button[0].style.backgroundColor = "#00a2ff";
+            button[0].style.borderColor = "#00a2ff";
+            button[0].style.color = "#fff";
+        }
+        /*
+            closing function on click button 2 index
+        */ 
+        button[2].onclick = function()
+        {
+            this.style.backgroundColor = "transparent";
+            this.style.borderColor = "red";
+            this.style.color = "red";
 
-                if(run_switch == false)
-                {
-                    run_time = setInterval(() => {
-
-                        run_switch = true;
-
-                        milliseconds++ ;
-
-                        if(milliseconds > 60)
-                        {
-                            milliseconds = 0;
-
-                            seconds++;
-                        }
-                        if(seconds > 60)
-                        {
-                            milliseconds = seconds = 0;
-
-                            minutes++;
-                        }
-                        if(minutes > 60)
-                        {
-                            minutes = seconds = milliseconds = 0;
-
-                            hours++;
-                        }
-                        timer.innerText = hours+" : "+minutes+" : "+seconds+" : "+milliseconds;
-
-                    }, 1000/60 );
-
-                    this.style.backgroundColor = "transparent";
-                    this.style.borderColor = "green";
-                    this.style.color = "green";
-
-                    button[0].innerText = "STOP";
-                }
-                if(run_switch == true)
-                {
-                    clearInterval(run_time);
-
-                    this.style.borderColor = "#00a2ff";
-                    this.style.color = "#00a2ff";
-
-                    button[0].innerText = "START";
-
-                    run_switch = false;
-                }
-
+            setTimeout(() =>
+            { 
+                window.close();
             }
-            button[1].onclick = function()
-            {
-                clearInterval(run_time);
-                
-                hours = minutes = seconds = milliseconds = 0;
+            ,1000);
+        }
 
-                timer.innerText = hours+" : "+minutes+" : "+seconds+" : "+milliseconds;
+    </script>
+</body>
 
-                button[0].style.backgroundColor = "#00a2ff";
-                button[0].style.borderColor = "#00a2ff";
-                button[0].style.color = "#fff";
-            }
-            button[2].onclick = function()
-            {
-                this.style.backgroundColor = "transparent";
-                this.style.borderColor = "red";
-                this.style.color = "red";
-
-                setTimeout(() =>
-                { 
-                    window.close();
-                }
-                ,2000);
-
-            }
-
-        </script>
-    </body>
 </html>
+<!-- the end -->
