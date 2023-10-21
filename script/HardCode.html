@@ -52,7 +52,7 @@
         }
         #password_fld{
             width: 100%;
-            margin: 1rem auto;
+            margin: 2rem auto;
             padding: 1rem;
             font-size: 1rem;
             color:#dc3545;
@@ -77,15 +77,22 @@
     <!-- { main frame } -->
     <main>
         <h1> StrongKey Password Generator </h1>
+        <!-- ( password field ) -->
         <input type="text" id="password_fld">
         <div>
-            <input type="text" placeholder="set PASSWORD length" id="keyLength">
-            <button id="key_genrator_btn"> Generate New Password </button>
-            <label for="number_check">
-                <input type="checkbox" name="num" id="number_check" value="true"> include Number
+            <!-- ( set length field ) -->
+            <label for="keyLength">
+                <input type="text" placeholder="between{4-30}" id="keyLength"> SET LENGTH  
             </label>
+            <!-- ( password generator button ) -->
+            <button id="key_genrator_btn"> Generate New Password </button>
+            <!-- ( select number ) -->
+            <label for="number_check">
+                <input type="checkbox" name="num" id="number_check" value="1"> include Number
+            </label>
+            <!-- ( select symbol ) -->
             <label for="symbol_check">
-                <input type="checkbox" name="sym" id="symbol_check" value="true" > include Symbol
+                <input type="checkbox" name="sym" id="symbol_check" value="1" > include Symbol
             </label>
         </div>
     </main>
@@ -110,20 +117,27 @@
 
         keyLength.value = 8
 
-        let number_check = document.getElementById('number_check')
-        
-        number_check.onchange = () => {
+        keyLength.onchange = () => {
 
-            console.log(number_check.checked)
+            const n = keyLength.value
 
-            if (number_check.checked)
+            if(n < 4 || n > 30)
             {
-                isNumber = true
+                alert(`range between { 4 to 30 } charctor`)
+                keyLength.value = 8
             }
             else
             {
-                isNumber = false
+                keyLength.value = n
             }
+        }
+        document.getElementById('number_check').onchange = () => {
+
+            isNumber = (isNumber)? false : true;
+        }
+        document.getElementById('symbol_check').onchange = () => {
+
+            isSymbol = (isSymbol)? false : true;
         }
 
         function randomKey()
@@ -134,7 +148,7 @@
         document.getElementById('key_genrator_btn').onclick = function()
         {
             key += key.toLowerCase()
-
+            
             if (isNumber)
             {
                 key += number
@@ -144,8 +158,13 @@
                 key += symbol;
             }
             for (let i = 0; i < keyLength.value; i++) hradcode += randomKey()
+            
             document.getElementById('password_fld').value = hradcode
+            
+            console.log(isNumber)
+            console.log(isSymbol)
             console.log(hradcode)
+            
             hradcode = ""
         }
 
