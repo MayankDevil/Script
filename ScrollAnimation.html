@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<!--
+-	script "JavaScript components"
+-	Developed | Desgined by Mayank
+-	https://github.com/MayankDevil
+-	location : ./index
+-->
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>MayankDevil</title>
+	<!--
+		---------
+		| style |
+		---------
+	-->
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            font-family: 'comic sans ms';
+            color: #192a56;
+            border: none;
+            outline: none;
+        }
+        body{
+            overflow: hidden;
+            overflow-y: auto;
+            scroll-behavior: smooth;
+        }
+        .frame{
+            width: 100vw;
+            height: 100vh;
+            display: grid;
+            place-content: center;
+        }
+        #frame{
+            font-size: 5vw;
+        }
+        .title{
+            font-size: 3rem;
+            margin: 3rem;
+        }
+        .col{
+            width: 60%;
+            padding: 2rem;
+            margin: auto;
+            font-size: 20px;
+            color:#ff9f43;
+            opacity: 0;
+            transform: scale(0);
+        }
+        a{
+            text-decoration: none;
+        }
+        .active{
+            transition: all linear 1s;
+            opacity: 1;
+            transform: scale(1);
+        }
+        .on{
+            transition: all linear 1s;
+            color: #00b894;
+            letter-spacing: 2px;
+        }
+    </style>
+    
+</head>
+
+<body>
+
+    <!-- -->    
+    <div id="frame" class="frame">Welcome To First Frame <br> Scroll Down Please!</div>
+    <div id="row" class="frame">
+
+        <div class="title"> Second Frame </div>
+
+        <div class="col"> Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fugiat, maxime? Eveniet mollitia totam dolore, delectus, vitae porro hic adipisci reprehenderit reiciendis et recusandae vel autem numquam. Minima cupiditate natus porro. Soluta dolorum pariatur voluptates similique odio quo perspiciatis fugit. Distinctio cumque voluptatum neque hic dignissimos, obcaecati sequi ipsa dolorum adipisci! </div>
+
+        <a href="#frame"> Click To Scroll Me </a>
+
+    </div>
+    <!--
+		---------
+		| style |
+		---------
+	-->
+    <script>
+
+
+        
+        window.addEventListener('scroll',() => {
+
+            let row = document.getElementById('row').getBoundingClientRect().top;
+            
+            let col = document.getElementsByClassName('col');
+
+            let title = document.getElementsByClassName('title');
+
+            let screenPosition = window.innerHeight;
+
+            if(row < screenPosition)
+            {
+                col[0].classList.add('active');
+                title[0].classList.add('on');
+            }
+            else
+            {
+                col[0].classList.remove('active');
+                title[0].classList.remove('on');
+            }
+
+        });
+
+    </script>
+    
+</body>
+
+</html>
+<!-- the edn --> 

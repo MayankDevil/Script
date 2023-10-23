@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<!--
+-	script "JavaScript components"
+-	Developed | Desgined by Mayank
+-	https://github.com/MayankDevil
+-	location : ./Lock
+-->
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>MayankDevil</title>
+	<!--
+        ---------
+		| style |
+		---------
+	-->
+    <style>
+        *{
+			margin:0;
+			padding: 0;
+			font-family:SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+			font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue","Noto Sans","Liberation Sans",Arial,sans-serif,"Apple Color Emoji";
+            color:#f8f9fa;
+			text-decoration: none;
+			font-weight: normal;
+			border: none;
+			outline: none;
+			box-sizing: border-box;
+		}
+        body{
+            overflow: hidden;
+            height: 100vh;
+            background:#f8f9fa;
+        }
+        #security{
+            max-width:500px;
+            margin:3rem auto;
+            background: #343a40;
+            border-radius:5px;
+        }
+        h2{
+            padding:20px;
+        }
+        p{
+            padding:30px;
+            font:18px arial;
+        }
+        label{
+            width:23%;
+            padding:3%;
+        }
+        .fld{
+            width:90%;
+            margin:1rem 5%;
+            padding: 1rem;
+            color: #ffffff; 
+            font-size:18px;
+            background:#6c757d;
+        }
+        .fld:focus{
+            border: 1px solid #007bff;
+        }
+        #btn{
+            width:50%;
+            margin:5%;
+            padding: 3% 5%;
+            font-size:18px;
+            background: #007bff;
+            border-radius: 10px;
+        } #btn:hover{
+            opacity: 0.7;
+        }
+
+    </style>
+
+</head>
+
+<body>
+    <!-- { main frame } -->
+    <main>
+
+        <div id="security">
+
+            <h2> &#128272; Security Lock </h2>
+
+            <input type="text" placeholder=" &#128373;   Enter Username" class="fld">
+            <input type="password" placeholder=" &#128273;   Enter Password" class="fld">
+            <input type="email" placeholder=" &#128231;   Enter Email-ID" class="fld">
+
+            <input type="button" value=" &#128274;    Login" id="btn">
+
+            <label> &#128065;  Show Password </label>
+
+        </div>
+
+    </main>
+    <!--
+        ----------
+        | script |
+        ----------
+    -->
+    <script>
+
+        let security =  document.getElementById('security');
+
+        let fld = document.getElementsByClassName('fld');
+
+        var n = 0, empty = "";
+
+        /*
+            password visibility
+        */ 
+        document.querySelector('label').onclick = function()
+        {
+            if(n%2 == 0)
+            {
+                this.innerHTML = "&#10004; Hide Password";
+                fld[1].setAttribute('type','text');
+            }
+            else
+            {
+                this.innerHTML = "&#128065;  Show Password";
+                fld[1].setAttribute('type','password');
+            }
+            n++;
+        }
+        /*
+            button onclick check field
+        */ 
+        document.getElementById('btn').onclick = function()
+        {
+            if(fld[0].value == empty)
+            {
+                security.innerHTML = "<h2> &#128276;  Username Alert </h2> <p> Your Username is empty Please check your user field it is required to login security protocal.</p> <button id='btn'>&#128078; Please Check</button>";    
+            }
+            else
+            {
+                if(fld[1].value == empty)
+                {
+                    security.innerHTML = "<h2> &#128276;  Password Alert </h2> <p> Your Password is empty Please check your password field it is required to login security protocal.</p> <button id='btn'>&#128078; Please Check</button>";    
+                }
+                else
+                {
+                    if(fld[2].value == empty)
+                    {
+                        security.innerHTML = "<h2> &#128276;  Email-ID Alert </h2> <p>Your Email-ID is empty Please check your email field it is required to login security protocal.</p> <button id='btn'>&#128078; Please Check</button>";    
+                    }
+                    else
+                    {
+                        if(fld[1].value == "hallo")
+                        {
+                            security.innerHTML = "<h2> &#128275; Successful Unlock </h2> <p> Welcome "+fld[0].value+" You are successfully unlock it security lock so congraculation for that opening. </p> <button id='btn'>&#128077; Done To Open </button>";
+                            
+                            document.querySelector('button').onclick = function()
+                            {
+                                setTimeout(() => {
+                                    window.open('file:///D:/Web/Website%208/index.html');
+                                }, 1000);
+                            } 
+                        }
+                        if(fld[0].value == "Mayank" && fld[1].value == "alisha" && fld[2].value == "fsociety@gmail.com")
+                        {
+                            security.innerHTML = "<h2> &#128578; Alisha </h2> <p> &#128075; Welcome Master Mayank, What Can I do for You? </p> <button id='btn'>&#128077; Success</button>";
+                        }
+                        else
+                        {
+                            security.innerHTML = "<h2> &#128271 Warning </h2> <p> Please recheck you password because your password is unvalid it effect your security protocal next time i will </p> <button id='btn'>&#128405; Recheck</button>";    
+                        }
+                    }
+                }
+            }
+            document.getElementById('btn').onclick = function()
+            {
+                document.location.reload();
+            }
+        }
+        /*
+            clear field value
+        */ 
+        function clear()
+        {
+            fld[0].value = empty;
+            fld[1].value = empty;
+            fld[2].value = empty;
+        }
+        clear();
+
+    </script>
+
+</body>
+
+</html>
+<!-- the end -->

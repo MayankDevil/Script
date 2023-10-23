@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<!--
+	Desgined by Mayank
+	Webpage  "Script/Searchbar".
+	JavaScript / CSS / HTML
+-->
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> Mayank </title>
+        <style>
+
+            *{
+                margin:0;
+                border:none;
+                outline: none;
+                font:normal 20px 'calibri';
+                overflow: hidden;
+            }
+            body{
+                width: 100vw;
+                height: 100vh;
+            }
+            #search{
+                width: 60%;
+                margin:20px auto;
+                padding:10px;
+                font-size:20px;
+                text-align: center;
+            }
+            #fld{
+                width: 70%;
+                padding:10px;
+                box-shadow:1px 1px 2px #333;
+            }
+            #btn{
+                width:20%;
+                padding:10px;
+                color:#10a0a0;
+                background: transparent;
+                border:2px solid #10a0a0;
+            } #btn:hover{
+                background: #10a0a0;
+                color:#fff;
+            }
+            #data{
+                width:50%;
+                margin:auto;
+                border:1px solid #10a0a0;
+                border-radius: 10px;
+            }
+            ul li{
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+            }
+            .del{
+                color:#10a0a0;
+                padding:5px 15px;
+            } .del:hover{
+                color:#f00;
+            }
+
+        </style>
+    </head>
+    <body>
+
+        <div id="search">
+
+            <input type="search" name="search" placeholder="Search Your Imagine" id="fld">
+
+            <input type="button" value="Search" id="btn">
+
+        </div>
+
+        <ul id="data"></ul>
+
+        <script>
+
+            let fld = document.getElementById("fld");
+
+            let btn = document.getElementById("btn");
+
+            let data =  document.getElementById("data");
+
+            var search_data =  new Array();
+
+            var count=0; 
+            
+            btn.onclick = () => {   
+
+                if(fld.value != "")
+                {
+                    search_data.push(fld.value)
+                
+                    while(count<search_data.length)
+                    {
+                        data.insertAdjacentHTML("afterbegin","<li>"+search_data[count]+"<div class='del'>&cross;</div></li>");
+                        count++;
+                    }
+                    fld.value = "";
+                }
+                else
+                {
+                    fld.placeholder = "Please Enter Value";
+
+                    setTimeout(() => {
+                        fld.placeholder = "Search Your Imagination";
+                    }, 2000);
+                }
+            }
+
+        </script>
+    </body>
+</html>

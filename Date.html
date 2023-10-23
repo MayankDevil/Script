@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<!--
+-	script "JavaScript components"
+-	Develope | Desgined by Mayank
+-	https://github.com/MayankDevil
+-	location : ./Date
+-->
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>MayankDevil</title>
+	<!--
+		---------
+		| style |
+		---------
+	-->
+    <style>
+        *{
+			margin:0;
+			padding: 0;
+			font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue","Noto Sans","Liberation Sans",Arial,sans-serif,"Apple Color Emoji";
+			color:#000000;
+			text-decoration: none;
+			font-weight: normal;
+			border: none;
+			outline: none;
+			box-sizing: border-box;
+		}
+        main{
+            width: 100%;
+            min-height: 100vh;
+            background: #2bcbcc;
+        }
+        #getDate{
+            padding: 1rem 2rem;
+            text-align: right;
+            font-size: 2rem;
+        }
+        #setDate{
+            display: grid;
+            grid-gap: 2rem;
+            grid-template-columns: repeat(7,1fr);
+            padding: 2rem;
+        }
+        .date, .dates{
+            text-align: center;
+            padding: 2rem;
+            font-size: 1.5rem;
+            border: 1px solid #0fb9b1;
+        }
+        .dates{
+            padding: 2rem;
+            font-size: 1rem;
+            color: #f5f6fa;
+            background: #000000;
+        }
+        @media screen and (max-width:900px) {
+            #setDate{
+                display: grid;
+                grid-gap: 1rem;
+                grid-template-columns: repeat(6,1fr);
+                padding: 1rem;
+            }
+        }
+        @media screen and (max-width:700px) {
+            #setDate{
+                grid-template-columns: repeat(5,1fr);
+            }
+        }
+        @media screen and (max-width:500px) {
+            #setDate{
+                grid-template-columns: repeat(4,1fr);
+            }
+        }
+        
+    </style>
+
+</head>
+
+<body>
+
+    <!-- { main Frame } -->
+    <main>
+
+        <div id="setDate"></div>
+        
+        <div id="getDate"></div>
+        
+        <!--
+            ---------
+            | script |
+            ---------
+        -->
+        <script>
+
+            let button = document.getElementsByTagName("button");
+
+            let field = document.getElementById("field");
+
+            let getDate = document.getElementById("getDate");
+
+            let setDate = document.getElementById("setDate");
+
+            let d = new Date();
+
+            var dates, months, years , monthDays;            
+            
+            dates = d.getDate();
+
+            days = ["Sun","Mon","Tues","Wednes","Thrus","Fri","Satur"]
+
+            years = d.getFullYear()
+
+            // set month number & name
+
+            switch(d.getMonth())
+            {
+                case 0 : months = "January";
+                    monthDays = '31';
+                    break;
+                case 1 : months = "February";
+                    monthDays = (years%4 != 0)? '28': '29';
+                    break;
+                case 2 : months = "March";
+                    monthDays = '31';
+                    break;
+                case 3 : months = "April";
+                    monthDays = '30';
+                    break;
+                case 4 : months = "May";
+                    monthDays = '31';
+                    break;
+                case 5 : months = "June";
+                    monthDays = '30';
+                    break;
+                case 6 : months = "July";
+                    monthDays = '31';
+                    break;
+                case 7 : months = "August";
+                    monthDays = '31';
+                    break;
+                case 8 : months = "September";
+                    monthDays = '30';
+                    break;
+                case 9 : months = "October";
+                    monthDays = '31';
+                    break;
+                case 10 : months = "November";
+                    monthDays = '30';
+                    break;
+                default : months = "December";
+                    monthDays = '31';
+            }
+
+            getDate.innerHTML = ` ${dates} <sup>th</sup> ${months} ${years} `
+
+            setInterval(function()
+            {
+                getDate.innerHTML = ` ${dates} <sup>th</sup> ${months} ${years} `
+            
+            }, 10*60*60)
+            /*
+                set dates and mark today
+            */ 
+            for (let i = 0; i < monthDays; i++)
+            {
+                if (dates == (i+1))
+                {
+                    setDate.insertAdjacentHTML("beforeend",`<div class='dates'> ${i+1}  ${days[d.getUTCDay()]}day </div>`)
+                }
+                else
+                {
+                    setDate.insertAdjacentHTML("beforeend",`<div class='date'> ${i+1} </div>`)
+                }
+            }
+            console.log(d.getUTCDay())
+
+        </script>
+
+    </main>
+
+</body>
+
+</html>
+<!-- the end -->

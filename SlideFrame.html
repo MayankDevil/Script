@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<!--
+	Mayank is Desginer.
+	Webpage  "Script/Time".
+	JavaScript / CSS / HTML
+-->
+<html>
+    <head>
+        <title> Mayank </title>
+        <style>
+            *{
+                font:bold 2rem arial;
+                margin: 0;
+                text-align: center;
+                color:#b96817 ;
+                border:none;
+                outline: none;
+                box-sizing: border-box;
+            }
+            #frame{
+                position: relative;
+                margin: auto;
+                width: 100%;
+                height: 70vh;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+            }
+            #frame button{
+                position:absolute;
+                z-index:3;
+                width:15vw;
+                height: 100%;
+                padding: 1rem;
+                font-size: 3rem;
+                color:#b96817;
+            }
+            #frame button:hover{
+                color:#000;
+            }
+            #l_btn{
+                z-index:5;
+                left:0;
+                background:linear-gradient(to left,transparent,#eee 90%);
+            }
+            #l_btn:hover{
+                border-left: 3px solid #b96817;
+            }
+            #r_btn{
+                z-index:5;
+                right:0;
+                background:linear-gradient(to right,transparent,#eee 90%);
+            }
+            #r_btn:hover{
+                border-right: 3px solid #b96817;
+            }
+            #test{
+                position:absolute;
+                overflow:auto;
+                display: flex;
+            }
+            #test > li{
+                padding: 3rem;
+                color: #000;
+                list-style-type: none;
+                margin: 1rem;
+                width: 300px;
+                height: 300px;
+                background-color: #b96817;
+            }
+            
+
+        </style>
+    </head>
+    <body>
+        <main>
+            <h2> Slide Gallary </h2>
+            <div id="frame">
+
+                <button id="l_btn"> &#10096; </button>
+
+                <div id="test">
+                    <li>1</li>
+                    <li>2</li>
+                    <li>3</li>
+                    <li>4</li>
+                    <li>5</li>
+                    <li>6</li>
+                    <li>7</li>
+                    <li>8</li>
+                    <li>9</li>
+                    <li>10</li>
+                    <li>11</li>
+                    <li>12</li>
+                    <li>13</li>
+                    <li>14</li>
+                    <li>15</li>
+                </div>
+
+                <button id="r_btn"> &#10097; </button>
+
+            </div>
+        
+        </main>
+        
+        <script>
+            var f_width = 0;
+            /*
+                Scroll < > method use to scrolling data ------------------------
+            */
+            document.getElementById('l_btn').onclick = () =>
+            {
+                if(test.scrollWidth > window.innerWidth)
+                {
+                    item_scroll();
+                    f_width -= window.innerWidth / 3;
+                }
+            }
+            document.getElementById('r_btn').onclick = () =>
+            {
+                if(test.scrollWidth > window.innerWidth)
+                {
+                    item_scroll();
+                    f_width += window.innerWidth / 3;
+                }
+            }
+            function item_scroll()
+            {
+                document.getElementById('test').style.left = `-${f_width}px`;
+            }
+        </script>
+    </body>
+</html>

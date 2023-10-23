@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<!--
+-	script "JavaScript components"
+-	Developed | Desgined by Mayank
+-	https://github.com/MayankDevil
+-	location : ./ToDay
+-->
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>MayankDevil</title>
+	<!--
+		---------
+		| style |
+		---------
+	-->
+    <style>
+        *{
+			margin:0;
+			padding: 0;
+			font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue","Noto Sans","Liberation Sans",Arial,sans-serif,"Apple Color Emoji";
+			color:#20252b;
+			text-decoration: none;
+			font-weight: normal;
+			border: none;
+			outline: none;
+			box-sizing: border-box;
+		}
+        #day{
+            font-size: 1.5rem;
+        }
+        #getDay{
+            max-width: 700px;
+            margin: 3rem auto;
+            padding: 1rem;
+            background: #FFF5BD;
+            border-radius: 5px;
+        }
+        #comment{
+            padding: 3rem 1rem;
+            line-height: 3rem;
+            font-style: italic;
+            font-size: 2rem;
+            color:#2c3e50;
+        }
+        button{
+            padding: 1rem;
+            font-size:1rem;
+            background: #ffbe76;
+            border-radius: 10px;
+        } button:hover{
+            background:#f0932b;
+        }
+
+    </style>
+
+</head>
+
+<body>
+    <!-- { main frame } -->
+    <main>
+
+        <div id="getDay">
+            <div id="day"></div>
+            <div id="comment"></div>
+            <div>
+                <button> i like it </button>
+                <button> next &#10097; </button>
+            </div>
+        </div>
+
+    </main>
+    <!--
+        ----------
+        | script |
+        ----------
+    -->
+    <script>
+
+        let btn = document.getElementsByTagName("button")
+
+        let getDay = document.getElementById("getDay")
+
+        let day = document.getElementById("day")
+
+        let comment = document.getElementById("comment")
+
+        let d = new Date()
+
+        var like = 0, week = ["Sun","Mon","Tues","Wednes","Thrus","Fri","Satur"]
+
+        var message = [
+            {
+                joke : "Why don't programmers like nature? It has to many bugs."
+            },
+            {
+                joke : "Parallel lines have so much in comman. It's shame they'll never meet."
+            },
+            {
+                joke : "Why did scarecrow win an award? Because he was outstanding in his field."
+            },
+            {
+                joke : "What did one wall say to the other wall? I all  meet you at the corner."
+            },
+            {
+                joke : "Why did the math book look sad? Because it had too many problems."
+            },
+            {
+                joke : "Why did the tomato turn red? Because it saw the salad dressing!"
+            },
+            {
+                joke : "What do you call a bear with no teeth? A gummy bear."
+            },
+            {
+                joke : "A daughter asked her dad. DAD, There is something that my boyfriend said that I didn't understand He said I have a beatutiful chassis two lovely airbags and a fantastic bumper. The data replied. You tell your boyfriend that if he opens your bonnet and pull out his dipstick to check the oil, i'll give him such service that his motor will cease and his exhaust will fall off"
+            },
+            {
+                joke : "What's the defference between OHH & AH? ... About ther inches."
+            },
+            {
+                joke : "Student ko raat ko kyu padhna chahiye. Kyuki Subhe toh dhoop padhti hai."
+            }
+        ]
+
+        day.innerText = ` ${week[d.getUTCDay()]}day :`
+
+        comment.innerText = `" ${message[0].joke} "`
+        
+        
+        btn[0].onclick = function()
+        {
+            if (confirm("are you like it joke : [Yes=OK]"))
+            {
+                alert(" Thanks by heart, Dear :) ");
+                btn[0].innerHTML = `like ${++ like}`
+            }
+            else
+            {
+                alert(" Sorry, but i make better once day :)");
+            }
+        }
+
+        btn[1].onclick = function()
+        {
+            comment.innerText = `" ${message[Math.floor(Math.random() * message.length)].joke} "`
+        }
+
+        // Reload function
+
+        setInterval(() => {
+            window.location.reload();
+        }, 60*60*1000);
+
+    </script>
+
+</body>
+
+</html>
+<!-- the end -->

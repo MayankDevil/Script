@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<!--
+-	script "JavaScript components"
+-	Developed | Desgined by Mayank
+-	https://github.com/MayankDevil
+-	location : ./NavBar
+-->
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>MayankDevil</title>
+	<!--
+		---------
+		| style |
+		---------
+	-->
+    <style>
+        *{
+			margin:0;
+			padding: 0;
+			font-family:SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+			font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue","Noto Sans","Liberation Sans",Arial,sans-serif,"Apple Color Emoji";
+			color:#20252b;
+			text-decoration: none;
+			font-weight: normal;
+			border: none;
+			outline: none;
+			box-sizing: border-box;
+		}
+		body{
+		    background:#343a40;
+		}
+		h1{
+		    color:#ffffff;		
+		}
+        #header{
+            background:#f8f9fa;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        #logo{
+            font-weight:700;
+            margin: 1rem 2rem;
+        }
+        #close_btn{
+            display: none;
+            position:absolute;
+            /* z-index: -5; */
+            top: 0.5rem;
+            right:2rem;
+            color: #6c757d;
+            padding: 0.5rem;
+            font-size: 1.5rem;
+        }
+        #close_btn:hover
+        {
+            color:#17a2b8;
+        }
+        #nav{
+            display:inline;
+            margin: auto 2rem;
+        }
+        #nav a{
+            display: inline-block;
+            width: 100px;
+            padding: 1rem;
+            font-size: 1rem;
+            text-align: center;
+        }
+        #nav a:hover{
+            color:#17a2b8;
+        }
+        @media screen and (max-width:700px){
+            #header{
+                position: relative;
+            }
+            #close_btn{
+                z-index: 10;
+                display: inline;
+            }
+            #nav{
+                transition:all linear 0.5s;
+                margin: 0;
+                padding-top: 10vh;
+                background:#f8f9fa;
+                position:absolute;
+                top: 0;
+                left: 150vh;
+                width: 100vw;
+                height: 100vh;
+                display: flex;
+                flex-flow: column nowrap;
+            }
+            #nav a{
+                width: 75%;
+                margin: auto;
+            }
+        }
+        #frame{
+            margin: 5rem auto;
+            text-align: center;
+        }
+
+    </style>
+
+</head>
+
+<body>
+    <!-- main frame -->
+    <main>
+        <!-- header -->
+        <div id="header">
+
+            <dv id="logo"> LOGO </dv>
+
+            <a id="close_btn"> &#9776; </a>
+
+            <div id="nav" class="">
+
+
+                    <a href="#"> HomeCity </a>
+                
+                    <a href="#"> Tourism </a>
+                
+                    <a href="#"> Education </a>
+                
+                    <a href="#"> Schemes </a>
+                
+                    <a href="#"> Map </a>
+                
+            </div>
+
+        </div>
+        <!-- content -->
+        <h1 id="frame"> RESPONSIVE NAVBAR </h1>
+    </main>
+    <!--
+        ----------
+        | script |
+        ----------
+    -->
+    <script>
+
+        let all_link = document.querySelectorAll("#header a");
+        
+        let close_btn = document.getElementById('close_btn');
+        
+        let nav = document.getElementById('nav');
+
+        var count = 0;
+
+        for (let i = 0; i < all_link.length; i++)
+        {
+            all_link[i].onclick = navbar_contorl;        
+        }
+        /*
+            navbar control set close
+        */ 
+        function navbar_contorl() 
+        {
+            if(count%2==0)
+            {
+                nav.style.left = `0`;
+                close_btn.innerHTML = " X ";
+            }
+            else
+            {
+                nav.style.left = `150vh`;
+                close_btn.innerHTML = " &#9776; ";
+            }
+            count++;
+        }
+
+    </script>
+    
+</body>
+
+</html>
+<!-- the end -->

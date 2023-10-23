@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<!--
+-	script "JavaScript components"
+-	Developed | Desgined by Mayank
+-	https://github.com/MayankDevil
+-	location : ./Theme
+-->
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>MayankDevil</title>
+	<!--
+		---------
+		| style |
+		---------
+	-->
+    <style>
+	    *{
+			margin:0;
+			padding: 0;
+			font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue","Noto Sans","Liberation Sans",Arial,sans-serif,"Apple Color Emoji";
+			color:var(--black);
+			text-decoration: none;
+			font-weight: normal;
+			border: none;
+			outline: none;
+			box-sizing: border-box;
+		}
+	    :root{
+		    --black:#343a40;
+		    --white:#f8f9fa;
+		    --gray:#6c757d;
+		    --blue:#007bff;
+	    }
+	    body.dark{
+		    --white:#343a40;
+		    --black:#f8f9fa;
+		    --gray:#6c757d;
+		    --blue:#007bff;
+	    }
+	    main{
+	        padding:2rem;
+	        background:var(--white);
+	    }
+	    a, p{
+	        font-size:1rem;
+	        color:var(--blue);
+	    }
+	    h1, h2, h4, p{
+	        color:var(--gray);
+	        padding:1rem 2rem;
+	    }
+	    h1,h4{
+	        color:var(--black);
+	    }
+	    #theme_btn{
+	        margin:1rem 2rem;
+		    padding:1rem;
+		    font-weight:700;
+		    font-size:1rem;
+		    color:var(--blue);
+		    background:var(--black);
+		    border-radius:5px;
+	    }
+	    #theme_btn:hover{
+	        opacity:0.8;
+	    }
+
+    </style>
+
+</head>
+
+<body>
+
+    <!-- { main frame } -->
+    <main>
+
+        <h1> Theme </h1>
+
+        <h2> Disable & Enable { Dark Theme } </h2>
+
+        <p>  Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam quasi repellat ipsum at aspernatur nulla vel ipsa ullam itaque fuga dignissimos, vero id blanditiis rem sed atque ad officiis sit nam nesciunt nisi unde ex? Nam amet est asperiores id illum dolore vero ipsum itaque maiores? Similique provident distinctio recusandae.	</p>
+
+        <!-- ( theme button ) -->
+        <button id="theme_btn"> Enable Dark Theme </button>
+        
+        <h4> Designed | Developed by <a href="https://github.com/MayankDevil/"> MayankDevil </a> </h4>
+
+    </main>
+    <!--
+		----------
+		| script |
+		----------
+	-->
+    <script>
+
+	    let theme_btn = document.getElementById("theme_btn")
+		
+		let isDarkTheme = false // theme status
+	    
+	    /*
+	        theme button onclick toggle dark class to body
+	    */
+	    theme_btn.onclick = function()
+	    {
+		    document.body.classList.toggle('dark')
+		    /*
+		        if isDarkTheme so Disable else Enable
+		    */
+		    if (isDarkTheme)
+		    {
+		        theme_btn.innerHTML = `Enable Dark Theme`
+                isDarkTheme = false    
+		    }
+		    else
+		    {
+		        theme_btn.innerHTML = `Disable Dark Theme`
+                isDarkTheme = true   
+		    }
+	    }
+
+    </script>
+    
+</body>
+
+</html>
+<!-- the end -->
