@@ -8,6 +8,6 @@
 
 ## 🔗 Links
 
-https://mayankdevil.github.io/script/
+##### <https://mayankdevil.github.io/Script/>
 
 ## 🧠 Developed by Mayank
